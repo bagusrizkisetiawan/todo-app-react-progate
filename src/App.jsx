@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Todos from "./components/Todos";
 import Swal from "sweetalert2";
+import TodoForm from "./components/TodoForm";
 
 function App() {
   const [todos, setTodos] = useState([
@@ -11,12 +12,12 @@ function App() {
     },
     {
       id: 2,
-      title: "Have lunch with Guru Domba",
+      title: "Have lunch with Bagus Rizki",
       completed: false,
     },
     {
       id: 3,
-      title: "Study React with Ninja Ken",
+      title: "Study React with comcom",
       completed: false,
     },
   ]);
@@ -44,12 +45,30 @@ function App() {
     });
   }
 
+  const addTodo = (todoTitle) => {
+    if (todoTitle === "") {
+      return;
+    }
+
+    const newTodo = {
+      id: todos.length + 1,
+      title: todoTitle,
+      completed: false,
+    };
+
+    const updatedTodos = todos.concat(newTodo);
+    setTodos(updatedTodos);
+  };
+
   return (
     <>
       <div className="container mt-5">
         <div className="row justify-content-center">
           <div className="col-lg-9">
-            <h4 className="mb-4">My Todo List</h4>
+            <div className="d-flex mb-4 justify-content-between align-items-center">
+              <h4 className="mb-0">My Todo List</h4>
+              <TodoForm addTodo={addTodo} />
+            </div>
 
             <Todos
               todos={todos}
