@@ -1,8 +1,7 @@
 import { useState } from "react";
+import Todos from "./components/Todos";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   const [todos, setTodos] = useState([
     {
       id: 1,
@@ -21,16 +20,12 @@ function App() {
     },
   ]);
 
-  console.log(todos);
-
   return (
     <>
       <div className="container mt-5">
         <h4>My Todo List</h4>
 
-        {todos.map((todo) => {
-          return <p key={todo.id}>{todo.title}</p>;
-        })}
+        <Todos todos={todos} />
       </div>
     </>
   );
