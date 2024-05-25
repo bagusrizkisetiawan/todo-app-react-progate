@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Todos from "./components/Todos";
+import Swal from "sweetalert2";
 
 function App() {
   const [todos, setTodos] = useState([
@@ -31,6 +32,18 @@ function App() {
     setTodos(updateTodos);
   }
 
+  function deleteTodo(todoId) {
+    const newTodos = todos.filter((todo) => todo.id !== todoId);
+    setTodos(newTodos);
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Berhasil Terhapus",
+      showConfirmButton: false,
+      timer: 1000,
+    });
+  }
+
   return (
     <>
       <div className="container mt-5">
@@ -38,7 +51,11 @@ function App() {
           <div className="col-lg-9">
             <h4 className="mb-4">My Todo List</h4>
 
-            <Todos todos={todos} toggleCompleted={toggleCompleted} />
+            <Todos
+              todos={todos}
+              toggleCompleted={toggleCompleted}
+              deleteTodo={deleteTodo}
+            />
           </div>
         </div>
       </div>
