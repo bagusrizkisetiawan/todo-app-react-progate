@@ -3,7 +3,11 @@ import React from "react";
 const TodoItem = ({ todo }) => {
   return (
     <>
-      <p>{todo.title}</p>
+      <div className="card mb-2">
+        <div className="card-body">
+          <p className="mb-0">{todo.title}</p>
+        </div>
+      </div>
     </>
   );
 };
