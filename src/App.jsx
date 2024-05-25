@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Todos from "./components/todos";
+import Todos from "./components/Todos";
 
 function App() {
   const [todos, setTodos] = useState([
@@ -23,9 +23,13 @@ function App() {
   return (
     <>
       <div className="container mt-5">
-        <h4>My Todo List</h4>
+        <div className="row justify-content-center">
+          <div className="col-lg-9">
+            <h4 className="mb-4">My Todo List</h4>
 
-        <Todos todos={todos} />
+            <Todos todos={todos} />
+          </div>
+        </div>
       </div>
     </>
   );
