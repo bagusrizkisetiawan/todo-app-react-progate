@@ -3,17 +3,34 @@ import { useState } from "react";
 function App() {
   const [count, setCount] = useState(0);
 
+  const [todos, setTodos] = useState([
+    {
+      id: 1,
+      title: "Finish Progate React Course",
+      completed: false,
+    },
+    {
+      id: 2,
+      title: "Have lunch with Guru Domba",
+      completed: false,
+    },
+    {
+      id: 3,
+      title: "Study React with Ninja Ken",
+      completed: false,
+    },
+  ]);
+
+  console.log(todos);
+
   return (
     <>
-      <div className="d-flex mt-5 justify-content-center">
-        <button
-          className="btn btn-primary px-4 btn-sm p-2 bg-primary"
-          onClick={() => {
-            setCount(count + 1);
-          }}
-        >
-          Hitung {count}
-        </button>
+      <div className="container mt-5">
+        <h4>My Todo List</h4>
+
+        {todos.map((todo) => {
+          return <p key={todo.id}>{todo.title}</p>;
+        })}
       </div>
     </>
   );
