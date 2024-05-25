@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { TodoContext } from "../App";
 
-const TodoItem = ({ todo, toggleCompleted, deleteTodo }) => {
+const TodoItem = ({ todo }) => {
+  const { toggleCompleted, deleteTodo } = useContext(TodoContext);
+
   function todoListStyle() {
     if (todo.completed) {
       return "text-success mb-0 fw-bold";

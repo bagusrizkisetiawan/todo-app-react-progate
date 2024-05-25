@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { createContext, useState } from "react";
 import Todos from "./components/Todos";
 import Swal from "sweetalert2";
 import TodoForm from "./components/TodoForm";
+
+export const TodoContext = createContext();
 
 function App() {
   const [todos, setTodos] = useState([
@@ -62,22 +64,24 @@ function App() {
 
   return (
     <>
-      <div className="container mt-5">
-        <div className="row justify-content-center">
-          <div className="col-lg-9">
-            <div className="d-flex mb-4 justify-content-between align-items-center">
-              <h4 className="mb-0">My Todo List</h4>
-              <TodoForm addTodo={addTodo} />
-            </div>
+      <TodoContext.Provider value={{ toggleCompleted, deleteTodo }}>
+        <div className="container mt-5">
+          <div className="row justify-content-center">
+            <div className="col-lg-9">
+              <div className="d-flex mb-4 justify-content-between align-items-center">
+                <h4 className="mb-0">My Todo List</h4>
+                <TodoForm addTodo={addTodo} />
+              </div>
 
-            <Todos
-              todos={todos}
-              toggleCompleted={toggleCompleted}
-              deleteTodo={deleteTodo}
-            />
+              <Todos
+                todos={todos}
+                // toggleCompleted={toggleCompleted}
+                // deleteTodo={deleteTodo}
+              />
+            </div>
           </div>
         </div>
-      </div>
+      </TodoContext.Provider>
     </>
   );
 }
