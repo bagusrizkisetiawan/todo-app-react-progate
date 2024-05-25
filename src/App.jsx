@@ -20,6 +20,17 @@ function App() {
     },
   ]);
 
+  function toggleCompleted(todoId) {
+    const updateTodos = todos.map((todo) => {
+      if (todo.id === todoId) {
+        todo.completed = !todo.completed;
+      }
+      return todo;
+    });
+
+    setTodos(updateTodos);
+  }
+
   return (
     <>
       <div className="container mt-5">
@@ -27,7 +38,7 @@ function App() {
           <div className="col-lg-9">
             <h4 className="mb-4">My Todo List</h4>
 
-            <Todos todos={todos} />
+            <Todos todos={todos} toggleCompleted={toggleCompleted} />
           </div>
         </div>
       </div>
