@@ -42,7 +42,7 @@ function TodoForm({ addTodo }) {
         <Modal.Header closeButton>
           <Modal.Title className="h6">Add Todo</Modal.Title>
         </Modal.Header>
-        <Modal.Body className="mt-3">
+        <Modal.Body className="">
           <form
             onSubmit={(event) => {
               handleSubmit(event);
@@ -51,7 +51,7 @@ function TodoForm({ addTodo }) {
             <input
               type="text"
               className="form-control mb-3 p-2"
-              placeholder="....."
+              placeholder="Todo"
               onChange={(event) => {
                 handleChangeTitle(event);
               }}
